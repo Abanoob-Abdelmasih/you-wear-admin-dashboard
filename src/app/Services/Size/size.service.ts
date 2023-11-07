@@ -6,12 +6,15 @@ import { ConfigService } from "../../Config/config.service";
   providedIn: "root",
 })
 export class SizeService {
+
   constructor(private configServices: ConfigService) {}
-  getCountry(getParams?: any) {
+
+  getAllSizes(getParams?: any) {
     return this.configServices.readRequest("/size/all", getParams).pipe(
       map((response) => {
         return response;
       })
     );
   }
+
 }
