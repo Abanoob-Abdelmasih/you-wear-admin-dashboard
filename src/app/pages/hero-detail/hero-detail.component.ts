@@ -12,23 +12,15 @@ export class HeroDetailComponent implements OnInit {
   ngOnInit(): void {
     const getParams = {};
 
-    this.sizeService.getCountry(getParams).subscribe({
+    this.sizeService.getAllSizes(getParams).subscribe({
       next: (response) => {
-        // if (response.status === 200) {
-        //   if (response.body.status === 200) {
-        //     let tempCountries = response.body.data; // because im getting 3 different arrays of countries
-        //     for (let i = 0; i < tempCountries.length; i++) {
-        //       this.countries = [...tempCountries];
-        //     }
-        //     if (this.is_edit != true) {
-        //       this.getStates(114);
-        //     }
-        //   }
-        // }
-        console.log(response);
+        if (response.status === 200) {
+          if (response.body.status === 200) {
+          console.log(response.body.data.all_sizes);
+        }
+        }
       },
       error: (err) => {
-        // this.toastr.error("", err.error.message);
       },
     });
   }
