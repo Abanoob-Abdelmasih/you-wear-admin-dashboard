@@ -69,6 +69,11 @@ const routes: Routes = [{
         .then(m => m.MiscellaneousModule),
     },
     {
+      path: 'test',
+      loadChildren: () => import('./hero-detail/hero-detail.module')
+        .then(m => m.HeroDetailModule),
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',
