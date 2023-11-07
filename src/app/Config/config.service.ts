@@ -12,12 +12,8 @@ import { catchError } from "rxjs/operators";
   providedIn: "root",
 })
 export class ConfigService {
-  public IS_LIVE = ["web.bandarestate.com"].includes(window.location.hostname);
-
   // temporary commenting this for
   private API_URL = "http://127.0.0.1:8000/api";
-  //  private API_URL = 'https://dev-cp.bandarestate.com/api/'
-  public baseRoute = "v1";
 
   private HTTP_OPTIONS = {
     headers: new HttpHeaders({
@@ -56,7 +52,7 @@ export class ConfigService {
   postRequest(url: string, getParams: any, postParams: any): Observable<any> {
     return this.http
       .post<any>(
-        this.API_URL + this.baseRoute + this.serialize(url, getParams),
+        this.API_URL + this.serialize(url, getParams),
         postParams,
         this.HTTP_OPTIONS
       )
@@ -69,18 +65,17 @@ export class ConfigService {
     postParams: any
   ): Observable<any> {
     return this.http
-      .post<any>(
-        this.API_URL + this.baseRoute + this.serialize(url, getParams),
-        postParams,
-        { ...this.HTTP_OPTIONS, observe: "response" }
-      )
+      .post<any>(this.API_URL + this.serialize(url, getParams), postParams, {
+        ...this.HTTP_OPTIONS,
+        observe: "response",
+      })
       .pipe(catchError(this.handleError));
   }
 
   putRequest(url: string, getParams: Object, postParams: any): Observable<any> {
     return this.http
       .put<any>(
-        this.API_URL + this.baseRoute + this.serialize(url, getParams),
+        this.API_URL + this.serialize(url, getParams),
         postParams,
         this.HTTP_OPTIONS
       )
@@ -89,10 +84,9 @@ export class ConfigService {
 
   deleteRequest(url: string, params: Object): Observable<HttpResponse<any>> {
     return this.http
-      .delete<any>(
-        this.API_URL + this.baseRoute + this.serialize(url, params),
-        { observe: "response" }
-      )
+      .delete<any>(this.API_URL + this.serialize(url, params), {
+        observe: "response",
+      })
       .pipe(catchError(this.handleError));
   }
 
@@ -122,11 +116,5 @@ export class ConfigService {
     return throwError(error);
   }
 
-  getLang() {
-    return "en";
-  }
 
-  getApiUrl() {
-    return this.API_URL + this.baseRoute;
-  }
 }
