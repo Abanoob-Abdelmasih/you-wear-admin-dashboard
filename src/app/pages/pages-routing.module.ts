@@ -70,7 +70,7 @@ const routes: Routes = [{
     },
     {
       path: 'sizes',
-      loadChildren: () => import('./all-sizes/all-sizes.module')
+      loadChildren: () => import('./sizes/all-sizes/all-sizes.module')
         .then(m => m.HeroDetailModule),
     },
     {
