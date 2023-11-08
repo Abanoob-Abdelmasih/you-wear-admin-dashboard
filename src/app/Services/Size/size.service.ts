@@ -25,4 +25,14 @@ export class SizeService {
         })
       );
   }
+
+  deleteSize(id: number, getParams?: any, postParams?: any) {
+    return this.configServices
+      .postNewRequest(`/size/${id}/delete`, getParams, postParams) //"size/7/delete"
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }
