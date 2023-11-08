@@ -1,3 +1,2 @@
-<button (click)="onClick()" type="button" class="btn btn-primary w-100">
-  <a [routerLink]="['/']">Edit</a>
-</button>
+<a [routerLink]="['/', type, rowData.id,action]" class="btn w-100 h-100"
+  [ngClass]="action==='edit'?'btn-primary':'btn-danger'">Edit</a>
