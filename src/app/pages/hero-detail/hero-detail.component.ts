@@ -16,12 +16,11 @@ export class HeroDetailComponent implements OnInit {
       next: (response) => {
         if (response.status === 200) {
           if (response.body.status === 200) {
-          console.log(response.body.data.all_sizes);
-        }
+            console.log(response.body.data.all_sizes);
+          }
         }
       },
-      error: (err) => {
-      },
+      error: (err) => {},
     });
   }
 }
