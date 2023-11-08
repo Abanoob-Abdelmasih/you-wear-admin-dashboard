@@ -1,4 +1,4 @@
-<a *ngIf="action==='edit'" [routerLink]="['/', type, rowData.id, action]" class="btn btn-primary w-100 h-100">{{action
+<a *ngIf="action==='edit'" [routerLink]="['/', type, rowData.id, 'edit']" class="btn btn-primary w-100 h-100">{{action
   | titlecase}}</a>
 
 <button (click)="deleteRow(rowData.id)" *ngIf="action==='delete'" class="btn btn-danger w-100 h-100">{{action
