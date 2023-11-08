@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SizeService } from "../../../Services/Size/size.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "ngx-size-form",
@@ -11,9 +11,33 @@ export class SizeFormComponent implements OnInit {
   sizeName: string;
   abbreviation: string;
   activate: boolean | undefined;
-  constructor(private sizeService: SizeService, private router: Router) {}
+
+  // ///////////  Edit Params   //////////////
+  editID: number;
+
+  constructor(
+    private sizeService: SizeService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.editID = Number(params["id"]);
+      if (this.editID) {
+        this.sizeService.getSize(this.editID).subscribe({
+          next: (response) => {
+            if (response.status === 200) {
+              if (response.body.status === 200) {
+                console.log(response.body.data);
+              }
+            }
+          },
+          error: (err) => {},
+        });
+      }
+    });
+
     this.activate = this.activate === undefined ? true : this.activate;
   }
 
@@ -37,4 +61,6 @@ export class SizeFormComponent implements OnInit {
       error: (err) => {},
     });
   }
+
+  // ////////////////////////////////////////////////////////////
 }
