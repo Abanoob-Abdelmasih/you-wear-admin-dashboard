@@ -59,7 +59,7 @@ export class AllSizesComponent implements OnInit {
         renderComponent: ButtonComponent,
         onComponentInitFunction(instance) {
           // instance.saves.subscribe((rowData) => {});
-          instance.type = "size";
+          instance.type = "sizes";
           instance.action = "edit";
         },
       },
@@ -69,7 +69,7 @@ export class AllSizesComponent implements OnInit {
         renderComponent: ButtonComponent,
         onComponentInitFunction(instance) {
           // instance.saves.subscribe((rowData) => {});
-          instance.type = "size";
+          instance.type = "sizes";
           instance.action = "delete";
         },
       },
