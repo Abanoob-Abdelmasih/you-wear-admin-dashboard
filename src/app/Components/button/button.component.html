@@ -1,2 +1,2 @@
-<a [routerLink]="['/', type, rowData.id,action]" class="btn w-100 h-100"
-  [ngClass]="action==='edit'?'btn-primary':'btn-danger'">Edit</a>
+<a [routerLink]="['/', type, rowData.id, action]" class="btn w-100 h-100"
+  [ngClass]="action==='edit' ? 'btn-primary' : 'btn-danger'">{{action | titlecase}}</a>
