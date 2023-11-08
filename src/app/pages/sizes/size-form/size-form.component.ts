@@ -17,11 +17,6 @@ export class SizeFormComponent implements OnInit {
     console.log("on itit");
   }
 
-  // toggleActivate(activate: boolean) {
-  //   // this.activate = activate;
-  //   console.log(activate)
-  // }
-
   addSizeFuntion() {
     const postParams = {
       name: this.sizeName,
