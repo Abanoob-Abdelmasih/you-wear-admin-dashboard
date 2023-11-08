@@ -69,8 +69,8 @@ const routes: Routes = [{
         .then(m => m.MiscellaneousModule),
     },
     {
-      path: 'test',
-      loadChildren: () => import('./hero-detail/hero-detail.module')
+      path: 'sizes',
+      loadChildren: () => import('./all-sizes/all-sizes.module')
         .then(m => m.HeroDetailModule),
     },
     {
