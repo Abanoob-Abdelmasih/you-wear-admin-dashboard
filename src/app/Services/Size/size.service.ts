@@ -35,4 +35,12 @@ export class SizeService {
         })
       );
   }
+
+  getSize(id: number) {
+    return this.configServices.readRequest("/size/" + id).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
 }
