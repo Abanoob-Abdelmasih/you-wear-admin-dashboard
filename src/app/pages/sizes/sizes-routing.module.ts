@@ -18,6 +18,10 @@ const routes: Routes = [
         component: SizeFormComponent,
       },
       {
+        path: ":id/edit",
+        component: SizeFormComponent,
+      },
+      {
         path: "",
         redirectTo: "",
         pathMatch: "full",
