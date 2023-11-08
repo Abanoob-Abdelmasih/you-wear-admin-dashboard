@@ -6,7 +6,6 @@ import { ConfigService } from "../../Config/config.service";
   providedIn: "root",
 })
 export class SizeService {
-
   constructor(private configServices: ConfigService) {}
 
   getAllSizes(getParams?: any) {
@@ -17,4 +16,13 @@ export class SizeService {
     );
   }
 
+  addSize(getParams?: any, postParams?: any) {
+    return this.configServices
+      .postNewRequest("/size/create", getParams, postParams)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }
