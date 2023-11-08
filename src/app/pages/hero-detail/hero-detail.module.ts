@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { HeroDetailRoutingModule } from './hero-detail-routing.module';
-import { HeroDetailComponent } from './hero-detail.component';
-import { NbCardModule } from '@nebular/theme';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
-
-
+import { HeroDetailRoutingModule } from "./hero-detail-routing.module";
+import { HeroDetailComponent } from "./hero-detail.component";
+import { NbCardModule } from "@nebular/theme";
+import { Ng2SmartTableModule } from "ng2-smart-table";
+import { ButtonModule } from "../../Components/button/button.module";
 
 @NgModule({
   declarations: [HeroDetailComponent],
@@ -14,7 +13,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     CommonModule,
     HeroDetailRoutingModule,
     NbCardModule,
-    Ng2SmartTableModule
-  ]
+    Ng2SmartTableModule,
+    ButtonModule
+  ],
 })
-export class HeroDetailModule { }
+export class HeroDetailModule {}
