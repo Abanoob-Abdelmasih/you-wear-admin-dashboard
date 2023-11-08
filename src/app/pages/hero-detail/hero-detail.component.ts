@@ -57,6 +57,11 @@ export class HeroDetailComponent implements OnInit {
         title: "Edit",
         type: "custom",
         renderComponent: ButtonComponent,
+        onComponentInitFunction(instance) {
+          instance.saves.subscribe((rowData) => {
+          });
+        },
+        customValue: "custom",
       },
     },
     actions: {
