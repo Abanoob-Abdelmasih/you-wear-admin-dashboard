@@ -8,23 +8,14 @@ import { ViewCell } from "ng2-smart-table";
 export class ButtonComponent implements ViewCell, OnInit {
   @Input() value: string | number;
   @Input() rowData: any;
-  @Input() customValue: any;
+  @Input() type: any;
+  @Input() action: any;
   @Output() saves: EventEmitter<any> = new EventEmitter();
   constructor() {}
 
   ngOnInit(): void {
-    console.log("on in it");
-    console.log(this.customValue);
+    console.log(this.rowData, this.type);
   }
 
-  onClick() {
-    // this.saves.emit(this.rowData);
-    console.log(this.rowData)
-  }
-
-  customAction() {
-    // Define the custom action logic here
-    // console.log("Custom action clicked for row:", this.rowData, this.value);
-    console.log(this.customValue);
-  }
+  customAction() {}
 }
