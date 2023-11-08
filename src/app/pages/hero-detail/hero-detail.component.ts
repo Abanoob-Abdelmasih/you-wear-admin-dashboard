@@ -62,7 +62,16 @@ export class HeroDetailComponent implements OnInit {
           instance.type = "size";
           instance.action = "edit";
         },
-        customValue: "custom",
+      },
+      delete: {
+        title: "Delete",
+        type: "custom",
+        renderComponent: ButtonComponent,
+        onComponentInitFunction(instance) {
+          // instance.saves.subscribe((rowData) => {});
+          instance.type = "size";
+          instance.action = "delete";
+        },
       },
     },
     actions: {
