@@ -32,7 +32,6 @@ export class SizeFormComponent implements OnInit {
           next: (response) => {
             if (response.status === 200) {
               if (response.body.status === 200) {
-                console.log(response.body.data.size);
                 this.sizeForm.setValue({
                   sizeName: response.body.data.size.name,
                   abbreviation: response.body.data.size.abbreviation,
@@ -56,8 +55,6 @@ export class SizeFormComponent implements OnInit {
       abbreviation: this.sizeForm.value.abbreviation,
       isActive: this.activate,
     };
-
-    console.log(postParams);
 
     if (this.editID) {
       this.sizeService.editSize(this.editID, {}, postParams).subscribe({
