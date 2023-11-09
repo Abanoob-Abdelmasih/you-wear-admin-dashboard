@@ -1,12 +1,24 @@
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
 import { ConfigService } from "../../Config/config.service";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class SizeService {
   constructor(private configServices: ConfigService) {}
+
+ public sizes$ = new BehaviorSubject([]);
+
+  setSizes(data: any) {
+    this.sizes$.next(data)
+  }
+
+  getSizes(){
+    return this.sizes$.asObservable()
+  }
+
 
   getAllSizes(getParams?: any) {
     return this.configServices.readRequest("/size/all", getParams).pipe(
