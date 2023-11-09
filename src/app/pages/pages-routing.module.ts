@@ -74,6 +74,11 @@ const routes: Routes = [{
         .then(m => m.HeroDetailModule),
     },
     {
+      path: 'colors',
+      loadChildren: () => import('./colors/colors.module')
+        .then(m => m.ColorsModule),
+    },
+    {
       path: '',
       redirectTo: 'dashboard',
       pathMatch: 'full',
