@@ -3,7 +3,7 @@
     <nb-card>
       <nb-card-header>Add Size</nb-card-header>
       <nb-card-body>
-        <form [formGroup]="sizeForm" (ngSubmit)="addSizeFuntion()">
+        <form [formGroup]="sizeForm" (ngSubmit)="sizeDetailsFunction()">
           <div class="form-group">
             <label for="sizeName" class="label">Size Name</label>
             <input formControlName="sizeName" type="text" nbInput fullWidth id="sizeName" name="sizeName"
