@@ -48,12 +48,8 @@ export class SizeFormComponent implements OnInit {
           error: (err) => {},
         });
       } else {
-        this.activate = true;
+        this.activate = true; // make by default true for new size forms
       }
-      // else {
-      //   this.activate = this.activate === undefined ? true : this.activate;
-      //   this.sizeForm.patchValue({first: 'Nancy'});
-      // }
     });
   }
 
