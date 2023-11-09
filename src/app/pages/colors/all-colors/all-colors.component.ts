@@ -8,9 +8,6 @@ import { ButtonComponent } from "../../../Components/button/button.component";
   styleUrls: ["./all-colors.component.scss"],
 })
 export class AllColorsComponent implements OnInit {
-
-
-
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -35,8 +32,8 @@ export class AllColorsComponent implements OnInit {
         title: "Name",
         type: "string",
       },
-      abbreviation: {
-        title: "Abbreviation",
+      hexcode: {
+        title: "Hexcode",
         type: "string",
       },
       isActive: {
@@ -96,7 +93,7 @@ export class AllColorsComponent implements OnInit {
     //   },
     //   error: (err) => {},
     // });
-    console.log()
+    console.log();
   }
 
   onDeleteConfirm(event): void {
