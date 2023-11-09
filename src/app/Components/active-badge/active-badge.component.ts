@@ -6,11 +6,7 @@ import { ViewCell } from "ng2-smart-table";
   templateUrl: "./active-badge.component.html",
   styleUrls: ["./active-badge.component.scss"],
 })
-export class ActiveBadgeComponent implements ViewCell, OnInit {
+export class ActiveBadgeComponent implements ViewCell {
   value: string | number;
   rowData: any;
-
-  ngOnInit(): void {
-    console.log(this.value);
-  }
 }
