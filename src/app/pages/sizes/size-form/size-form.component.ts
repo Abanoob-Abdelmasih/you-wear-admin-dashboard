@@ -57,9 +57,45 @@ export class SizeFormComponent implements OnInit {
 
   addSizeFuntion() {
     const postParams = {
-      // name: this.sizeName,
-      // abbreviation: this.abbreviation,
-      // isActive: this.activate,
+      name: this.sizeForm.value.sizeName,
+      abbreviation: this.sizeForm.value.abbreviation,
+      isActive: this.activate,
+    };
+
+    console.log(postParams);
+
+    if (this.editID) {
+      this.sizeService.editSize(this.editID, {}, postParams).subscribe({
+        next: (response) => {
+          if (response.status === 200) {
+            if (response.body.status === 200) {
+              this.router.navigate(["/sizes"]);
+            }
+          }
+        },
+        error: (err) => {},
+      });
+    } else {
+      this.sizeService.addSize({}, postParams).subscribe({
+        next: (response) => {
+          if (response.status === 200) {
+            if (response.body.status === 200) {
+              this.router.navigate(["/sizes"]);
+            }
+          }
+        },
+        error: (err) => {},
+      });
+    }
+  }
+
+  // ////////////////////////////////////////////////////////////
+
+  editSizeFuntion() {
+    const postParams = {
+      name: this.sizeForm.value.sizeName,
+      abbreviation: this.sizeForm.value.abbreviation,
+      isActive: this.activate,
     };
 
     console.log(postParams);
@@ -75,6 +111,4 @@ export class SizeFormComponent implements OnInit {
       error: (err) => {},
     });
   }
-
-  // ////////////////////////////////////////////////////////////
 }
