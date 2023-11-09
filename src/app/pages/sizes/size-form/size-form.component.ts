@@ -50,7 +50,7 @@ export class SizeFormComponent implements OnInit {
     });
   }
 
-  addSizeFuntion() {
+  sizeDetailsFunction() {
     const postParams = {
       name: this.sizeForm.value.sizeName,
       abbreviation: this.sizeForm.value.abbreviation,
@@ -82,28 +82,5 @@ export class SizeFormComponent implements OnInit {
         error: (err) => {},
       });
     }
-  }
-
-  // ////////////////////////////////////////////////////////////
-
-  editSizeFuntion() {
-    const postParams = {
-      name: this.sizeForm.value.sizeName,
-      abbreviation: this.sizeForm.value.abbreviation,
-      isActive: this.activate,
-    };
-
-    console.log(postParams);
-
-    this.sizeService.addSize({}, postParams).subscribe({
-      next: (response) => {
-        if (response.status === 200) {
-          if (response.body.status === 200) {
-            this.router.navigate(["/sizes"]);
-          }
-        }
-      },
-      error: (err) => {},
-    });
   }
 }
