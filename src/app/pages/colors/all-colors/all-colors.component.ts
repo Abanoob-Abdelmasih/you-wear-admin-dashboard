@@ -51,7 +51,7 @@ export class AllColorsComponent implements OnInit {
         renderComponent: ButtonComponent,
         onComponentInitFunction(instance) {
           // instance.saves.subscribe((rowData) => {});
-          instance.type = "sizes";
+          instance.type = "colors";
           instance.action = "edit";
         },
       },
@@ -62,7 +62,7 @@ export class AllColorsComponent implements OnInit {
         renderComponent: ButtonComponent,
         onComponentInitFunction(instance) {
           // instance.saves.subscribe((rowData) => {});
-          instance.type = "sizes";
+          instance.type = "colors";
           instance.action = "delete";
         },
       },
@@ -90,13 +90,12 @@ export class AllColorsComponent implements OnInit {
       next: (response) => {
         if (response.status === 200) {
           if (response.body.status === 200) {
-            this.colorService.setColors(response.body.data.all_sizes);
+            this.colorService.setColors(response.body.data.all_colors);
           }
         }
       },
       error: (err) => {},
     });
-    console.log();
   }
 
   onDeleteConfirm(event): void {
