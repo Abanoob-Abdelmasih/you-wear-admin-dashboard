@@ -44,10 +44,11 @@ export class ColorFormComponent implements OnInit {
             if (response.status === 200) {
               if (response.body.status === 200) {
                 this.colorForm.patchValue({
-                  colorName: response.body.data.size.name,
+                  colorName: response.body.data.color.name,
                 });
+                this.color = response.body.data.color.hexcode
                 this.activate =
-                  response.body.data.size.isActive === 0 ? false : true;
+                  response.body.data.color.isActive === '0' ? false : true;
               }
             }
           },
