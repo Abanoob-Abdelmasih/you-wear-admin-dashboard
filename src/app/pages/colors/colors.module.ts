@@ -6,6 +6,7 @@ import { AllColorsComponent } from "./all-colors/all-colors.component";
 import { ColorFormComponent } from "./color-form/color-form.component";
 import { NbCardModule } from "@nebular/theme";
 import { Ng2SmartTableModule } from "ng2-smart-table";
+import { ColorPickerModule } from "ngx-color-picker";
 
 @NgModule({
   declarations: [AllColorsComponent, ColorFormComponent],
@@ -14,6 +15,7 @@ import { Ng2SmartTableModule } from "ng2-smart-table";
     ColorsRoutingModule,
     NbCardModule,
     Ng2SmartTableModule,
+    ColorPickerModule
   ],
 })
 export class ColorsModule {}
