@@ -3,11 +3,12 @@ import { SizeService } from "../../../Services/Size/size.service";
 import { LocalDataSource } from "ng2-smart-table";
 import { SmartTableData } from "../../../@core/data/smart-table";
 import { ButtonComponent } from "../../../Components/button/button.component";
+import { ActiveBadgeComponent } from "../../../Components/active-badge/active-badge.component";
 
 @Component({
-  selector: 'ngx-all-sizes',
-  templateUrl: './all-sizes.component.html',
-  styleUrls: ['./all-sizes.component.scss'],
+  selector: "ngx-all-sizes",
+  templateUrl: "./all-sizes.component.html",
+  styleUrls: ["./all-sizes.component.scss"],
 })
 export class AllSizesComponent implements OnInit {
   constructor(
@@ -51,7 +52,8 @@ export class AllSizesComponent implements OnInit {
       },
       isActive: {
         title: "Active",
-        type: "boolean",
+        type: "custom",
+        renderComponent: ActiveBadgeComponent,
       },
       edit: {
         title: "Edit",
