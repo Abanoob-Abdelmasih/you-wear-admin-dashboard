@@ -8,14 +8,11 @@ import { FormControl, FormGroup } from "@angular/forms";
   styleUrls: ["./size-form.component.scss"],
 })
 export class SizeFormComponent implements OnInit {
-  // sizeName: string;
-  // abbreviation: string;
   activate: boolean | undefined;
 
   sizeForm = new FormGroup({
     sizeName: new FormControl(null),
     abbreviation: new FormControl(null),
-    // activate: new FormControl(true),
   });
 
   // ///////////  Edit Params   //////////////
