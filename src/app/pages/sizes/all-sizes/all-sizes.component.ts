@@ -58,6 +58,7 @@ export class AllSizesComponent implements OnInit {
       edit: {
         title: "Edit",
         type: "custom",
+        filter: false,
         renderComponent: ButtonComponent,
         onComponentInitFunction(instance) {
           // instance.saves.subscribe((rowData) => {});
@@ -68,6 +69,7 @@ export class AllSizesComponent implements OnInit {
       delete: {
         title: "Delete",
         type: "custom",
+        filter: false,
         renderComponent: ButtonComponent,
         onComponentInitFunction(instance) {
           // instance.saves.subscribe((rowData) => {});
