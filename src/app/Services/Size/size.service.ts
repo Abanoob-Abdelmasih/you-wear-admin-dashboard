@@ -43,4 +43,14 @@ export class SizeService {
       })
     );
   }
+
+  editSize(id: number, getParams?: any, postParams?: any) {
+    return this.configServices
+      .postNewRequest(`/size/${id}/update`, getParams, postParams)
+      .pipe(
+        map((response) => {
+          return response;
+        })
+      );
+  }
 }
