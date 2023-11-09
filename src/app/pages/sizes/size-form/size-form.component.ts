@@ -47,6 +47,8 @@ export class SizeFormComponent implements OnInit {
           },
           error: (err) => {},
         });
+      } else {
+        this.activate = true;
       }
       // else {
       //   this.activate = this.activate === undefined ? true : this.activate;
