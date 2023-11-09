@@ -1,16 +1,22 @@
 import { Component, OnInit } from "@angular/core";
 import { SizeService } from "../../../Services/Size/size.service";
 import { ActivatedRoute, Router } from "@angular/router";
-
+import { FormControl, FormGroup } from "@angular/forms";
 @Component({
   selector: "ngx-size-form",
   templateUrl: "./size-form.component.html",
   styleUrls: ["./size-form.component.scss"],
 })
 export class SizeFormComponent implements OnInit {
-  sizeName: string;
-  abbreviation: string;
+  // sizeName: string;
+  // abbreviation: string;
   activate: boolean | undefined;
+
+  sizeForm = new FormGroup({
+    sizeName: new FormControl(null),
+    abbreviation: new FormControl(null),
+    // activate: new FormControl(true),
+  });
 
   // ///////////  Edit Params   //////////////
   editID: number;
@@ -29,23 +35,31 @@ export class SizeFormComponent implements OnInit {
           next: (response) => {
             if (response.status === 200) {
               if (response.body.status === 200) {
-                console.log(response.body.data);
+                console.log(response.body.data.size);
+                this.sizeForm.setValue({
+                  sizeName: response.body.data.size.name,
+                  abbreviation: response.body.data.size.abbreviation,
+                });
+                this.activate =
+                  response.body.data.size.isActive === 0 ? false : true;
               }
             }
           },
           error: (err) => {},
         });
       }
+      // else {
+      //   this.activate = this.activate === undefined ? true : this.activate;
+      //   this.sizeForm.patchValue({first: 'Nancy'});
+      // }
     });
-
-    this.activate = this.activate === undefined ? true : this.activate;
   }
 
   addSizeFuntion() {
     const postParams = {
-      name: this.sizeName,
-      abbreviation: this.abbreviation,
-      isActive: this.activate,
+      // name: this.sizeName,
+      // abbreviation: this.abbreviation,
+      // isActive: this.activate,
     };
 
     console.log(postParams);
