@@ -20,9 +20,10 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+import { ActiveBadgeComponent } from './Components/active-badge/active-badge.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,ActiveBadgeComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
