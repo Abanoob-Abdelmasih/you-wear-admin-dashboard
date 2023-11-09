@@ -86,25 +86,26 @@ export class AllSizesComponent implements OnInit {
   data = [];
 
   ngOnInit(): void {
-    const getParams = {};
+    this.sizeService.getSizes().subscribe({
+      next: (response) => {
+        this.data = response;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
 
-    this.sizeService.getAllSizes(getParams).subscribe({
+    this.sizeService.getAllSizes().subscribe({
       next: (response) => {
         if (response.status === 200) {
           if (response.body.status === 200) {
-            // console.log(response.body.data.all_sizes);
-            this.data = response.body.data.all_sizes;
+            this.sizeService.setSizes(response.body.data.all_sizes);
           }
         }
       },
       error: (err) => {},
     });
   }
-
-  // constructor(private service: SmartTableData) {
-  //   const data = this.service.getData();
-  //   this.source.load(data);
-  // }
 
   onDeleteConfirm(event): void {
     if (window.confirm("Are you sure you want to delete?")) {
