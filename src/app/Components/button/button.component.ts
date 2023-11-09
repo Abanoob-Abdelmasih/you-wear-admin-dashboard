@@ -20,6 +20,7 @@ export class ButtonComponent implements ViewCell {
         if (response.status === 200) {
           if (response.body.status === 200) {
             // this.router.navigate(["/sizes"]);
+            this.sizeService.setSizes(response.body.data.sizes)
           }
         }
       },
