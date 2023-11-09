@@ -20,12 +20,14 @@ import { Ng2SmartTableModule } from "ng2-smart-table";
 import { ButtonModule } from "../../Components/button/button.module";
 import { SizeFormComponent } from "./size-form/size-form.component";
 import { ThemeModule } from "../../@theme/theme.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AllSizesComponent, SizeFormComponent],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     Ng2SmartTableModule,
     SizeRoutingModule,
     ThemeModule,
@@ -39,8 +41,7 @@ import { FormsModule } from "@angular/forms";
     NbDatepickerModule,
     NbSelectModule,
     NbIconModule,
-    FormsModule,
-    NbToggleModule
+    NbToggleModule,
   ],
 })
 export class HeroDetailModule {}
