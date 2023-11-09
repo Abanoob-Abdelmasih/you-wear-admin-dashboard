@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActiveBadgeComponent } from "../../../Components/active-badge/active-badge.component";
 import { ButtonComponent } from "../../../Components/button/button.component";
+import { ColorService } from "../../../Services/Color/color.service";
 
 @Component({
   selector: "ngx-all-colors",
@@ -8,6 +9,8 @@ import { ButtonComponent } from "../../../Components/button/button.component";
   styleUrls: ["./all-colors.component.scss"],
 })
 export class AllColorsComponent implements OnInit {
+  constructor(private colorService: ColorService) {}
+
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -74,25 +77,25 @@ export class AllColorsComponent implements OnInit {
   data = [];
 
   ngOnInit(): void {
-    // this.sizeService.getSizes().subscribe({
-    //   next: (response) => {
-    //     this.data = response;
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   },
-    // });
+    this.colorService.getColors().subscribe({
+      next: (response) => {
+        this.data = response;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
 
-    // this.sizeService.getAllSizes().subscribe({
-    //   next: (response) => {
-    //     if (response.status === 200) {
-    //       if (response.body.status === 200) {
-    //         this.sizeService.setSizes(response.body.data.all_sizes);
-    //       }
-    //     }
-    //   },
-    //   error: (err) => {},
-    // });
+    this.colorService.getAllColors().subscribe({
+      next: (response) => {
+        if (response.status === 200) {
+          if (response.body.status === 200) {
+            this.colorService.setColors(response.body.data.all_sizes);
+          }
+        }
+      },
+      error: (err) => {},
+    });
     console.log();
   }
 
