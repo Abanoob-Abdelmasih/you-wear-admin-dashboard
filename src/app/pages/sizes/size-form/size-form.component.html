@@ -11,17 +11,23 @@
             <label for="sizeName" class="label">Size Name</label>
             <input formControlName="sizeName" type="text" nbInput fullWidth id="sizeName" name="sizeName"
               placeholder="Small">
-            <div *ngIf="formSubmitted && sizeForm.get('sizeName').hasError('required')" class=" text-danger ">
-              Size Name is required.
-            </div>
+              <div *ngIf="formSubmitted && sizeForm.get('sizeName').hasError('required')" class=" text-danger ">
+                Size Name is required!.
+              </div>
+              <div *ngIf="formSubmitted && sizeForm.get('sizeName').hasError('minlength')" class=" text-danger ">
+                Size Name must be at least 3 characters long!.
+              </div>
           </div>
           <div class="form-group">
             <label for="abbreviation" class="label">Abbreviation</label>
             <input formControlName="abbreviation" type="Text" nbInput fullWidth id="abbreviation" name="abbreviation"
               placeholder="S">
-            <div *ngIf="formSubmitted && sizeForm.get('sizeName').hasError('minlength')" class=" text-danger ">
-              Size Name must be at least 1 characters long.
-            </div>
+              <div *ngIf="formSubmitted && sizeForm.get('abbreviation').hasError('required')" class=" text-danger ">
+                Abbreviation is required!.
+              </div>
+              <div *ngIf="formSubmitted && sizeForm.get('abbreviation').hasError('maxlength')" class=" text-danger ">
+                Abbreviation must be at least 1 character(s) long!.
+              </div>
           </div>
           <div class="form-group">
             <!-- <nb-checkbox (checkedChange)="toggleActivate($event)"  name="activate"><span class="h6">Activate</span></nb-checkbox> -->
