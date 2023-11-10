@@ -1,10 +1,33 @@
-<ngx-dropzone (change)="onSelect($event)">
+<div class="row">
+  <div class="col-lg-12 h-100">
+    <nb-card>
+      <nb-card-header>Basic form</nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group">
+            <label for="productName" class="label">Product name</label>
+            <input type="text" nbInput fullWidth id="productName" name="productName" placeholder="T-Shirt">
+          </div>
+          <div class="form-group">
+            <label for="productName" class="label">Product name</label>
+            <input type="text" nbInput fullWidth id="productName" name="productName" placeholder="T-Shirt">
+          </div>
+          <div class="form-group">
+            <nb-toggle [(checked)]="activate"><span class="h6">Activate</span></nb-toggle>
+          </div>
 
-  <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+          <!-- dropzone -->
+          <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone-label>Drop here</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+              [removable]="true" (removed)="onRemove(f)">
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+          <!-- end of dropzone -->
 
-  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true"
-    (removed)="onRemove(f)">
-    <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
-  </ngx-dropzone-image-preview>
-
-</ngx-dropzone>
+          <button type="submit" nbButton status="primary">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
