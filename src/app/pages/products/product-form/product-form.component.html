@@ -9,21 +9,39 @@
             <input type="text" nbInput fullWidth id="productName" name="productName" placeholder="T-Shirt">
           </div>
           <div class="form-group">
-            <label for="productName" class="label">Product name</label>
-            <input type="text" nbInput fullWidth id="productName" name="productName" placeholder="T-Shirt">
+            <label for="quantity" class="label">Quantity</label>
+            <input type="text" nbInput fullWidth id="quantity" name="quantity" placeholder="T-Shirt">
           </div>
-          <div class="form-group">
-            <nb-toggle [(checked)]="activate"><span class="h6">Activate</span></nb-toggle>
+
+          <div class=" flex align-items-center mb-3">
+            <nb-select multiple placeholder="Multiple Select">
+              <nb-option value="1">Option 1</nb-option>
+              <nb-option value="2">Option 2</nb-option>
+              <nb-option value="3">Option 3</nb-option>
+              <nb-option value="4">Option 4</nb-option>
+            </nb-select>
+            <nb-select multiple placeholder="Multiple Select">
+              <nb-option value="1">Option 1</nb-option>
+              <nb-option value="2">Option 2</nb-option>
+              <nb-option value="3">Option 3</nb-option>
+              <nb-option value="4">Option 4</nb-option>
+            </nb-select>
           </div>
 
           <!-- dropzone -->
-          <ngx-dropzone (change)="onSelect($event)">
-            <ngx-dropzone-label>Drop here</ngx-dropzone-label>
-            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
-              [removable]="true" (removed)="onRemove(f)">
-            </ngx-dropzone-image-preview>
-          </ngx-dropzone>
+          <div class="mb-3">
+            <ngx-dropzone (change)="onSelect($event)">
+              <ngx-dropzone-label>Drop here</ngx-dropzone-label>
+              <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                [removable]="true" (removed)="onRemove(f)">
+              </ngx-dropzone-image-preview>
+            </ngx-dropzone>
+          </div>
           <!-- end of dropzone -->
+
+          <div class="form-group">
+            <nb-toggle [(checked)]="activate"><span class="h6">Activate</span></nb-toggle>
+          </div>
 
           <button type="submit" nbButton status="primary">Submit</button>
         </form>
