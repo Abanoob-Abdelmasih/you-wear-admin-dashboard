@@ -7,7 +7,7 @@ import { Component } from "@angular/core";
 })
 export class ProductFormComponent {
   // variables
-  activate: boolean | undefined;
+  activate?: boolean | undefined = true;
 
   // <---------------------------- dropzone logic ---------------------------->
   files: File[] = [];
