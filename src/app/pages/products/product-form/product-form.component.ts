@@ -6,7 +6,10 @@ import { Component } from "@angular/core";
   styleUrls: ["./product-form.component.scss"],
 })
 export class ProductFormComponent {
-  // in app.component.ts
+  // variables
+  activate: boolean | undefined;
+
+  // <---------------------------- dropzone logic ---------------------------->
   files: File[] = [];
 
   onSelect(event) {
@@ -18,4 +21,5 @@ export class ProductFormComponent {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
   }
+  // <---------------------------- end of dropzone logic ---------------------------->
 }
