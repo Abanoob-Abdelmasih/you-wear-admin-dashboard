@@ -19,7 +19,7 @@ export class ProductFormComponent implements OnInit {
   activate?: boolean | undefined = true;
   allSizes = [];
   allColors = [];
-  configsSelected = [{ color: 1, size: 1, quantity: 1 }];
+  configsSelected = [];
 
   ngOnInit(): void {
     this.colorService.getAllColors().subscribe({
@@ -92,5 +92,6 @@ export class ProductFormComponent implements OnInit {
 
   productDetailsFunction() {
     // console.log(this.productForm.value.colorSelected);
+    alert(this.productForm.value)
   }
 }
