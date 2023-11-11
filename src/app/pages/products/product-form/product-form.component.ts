@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "ngx-product-form",
@@ -8,6 +9,10 @@ import { Component } from "@angular/core";
 export class ProductFormComponent {
   // variables
   activate?: boolean | undefined = true;
+
+  productForm = new FormGroup({
+    colorSelected: new FormControl(null, Validators.required),
+  });
 
   // <---------------------------- dropzone logic ---------------------------->
   files: File[] = [];
@@ -22,4 +27,10 @@ export class ProductFormComponent {
     this.files.splice(this.files.indexOf(event), 1);
   }
   // <---------------------------- end of dropzone logic ---------------------------->
+
+  // <---------------------------- product details function ---------------------------->
+
+  productDetailsFunction() {
+    console.log(this.productForm.value.colorSelected);
+  }
 }
