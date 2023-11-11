@@ -8,25 +8,69 @@
             <label for="productName" class="label">Product name</label>
             <input type="text" nbInput fullWidth id="productName" name="productName" placeholder="T-Shirt">
           </div>
-          <div class="form-group">
-            <label for="quantity" class="label">Quantity</label>
-            <input type="text" nbInput fullWidth id="quantity" name="quantity" placeholder="T-Shirt">
+
+          <!-- Table -->
+          <div>
+            <table class="table table-bordered text-white">
+              <thead>
+                <tr>
+                  <th scope="col">Color</th>
+                  <th scope="col">Size</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">
+                    <nb-select multiple placeholder="Color" style="width:  100%;">
+                      <nb-option value="1">Option 1</nb-option>
+                      <nb-option value="2">Option 2</nb-option>
+                      <nb-option value="3">Option 3</nb-option>
+                      <nb-option value="4">Option 4</nb-option>
+                    </nb-select>
+                  </td>
+                  <td>
+                    <nb-select multiple placeholder="Size" style="width:  100%;">
+                      <nb-option value="1">Option 1</nb-option>
+                      <nb-option value="2">Option 2</nb-option>
+                      <nb-option value="3">Option 3</nb-option>
+                      <nb-option value="4">Option 4</nb-option>
+                    </nb-select>
+                  </td>
+                  <td>
+                    <input type="text" nbInput fullWidth id="quantity" name="quantity" placeholder="12">
+                  </td>
+                  <td>Add</td>
+                </tr>
+
+                <!-- Display selected configs -->
+                <tr>
+                  <td scope="row">
+                    <nb-select multiple placeholder="Color" style="width:  100%;">
+                      <nb-option value="1">Option 1</nb-option>
+                      <nb-option value="2">Option 2</nb-option>
+                      <nb-option value="3">Option 3</nb-option>
+                      <nb-option value="4">Option 4</nb-option>
+                    </nb-select>
+                  </td>
+                  <td>
+                    <nb-select multiple placeholder="Size" style="width:  100%;">
+                      <nb-option value="1">Option 1</nb-option>
+                      <nb-option value="2">Option 2</nb-option>
+                      <nb-option value="3">Option 3</nb-option>
+                      <nb-option value="4">Option 4</nb-option>
+                    </nb-select>
+                  </td>
+                  <td>10</td>
+                  <td>Remove</td>
+                </tr>
+                <!-- End display selected configs -->
+
+              </tbody>
+            </table>
           </div>
 
-          <div class="  mb-3">
-            <nb-select multiple placeholder="Color" style="min-width: 13rem;">
-              <nb-option value="1">Option 1</nb-option>
-              <nb-option value="2">Option 2</nb-option>
-              <nb-option value="3">Option 3</nb-option>
-              <nb-option value="4">Option 4</nb-option>
-            </nb-select>
-            <nb-select multiple placeholder="Size" style="min-width: 13rem;">
-              <nb-option value="1">Option 1</nb-option>
-              <nb-option value="2">Option 2</nb-option>
-              <nb-option value="3">Option 3</nb-option>
-              <nb-option value="4">Option 4</nb-option>
-            </nb-select>
-          </div>
+          <!-- End of table -->
 
           <!-- dropzone -->
           <div class="mb-3">
