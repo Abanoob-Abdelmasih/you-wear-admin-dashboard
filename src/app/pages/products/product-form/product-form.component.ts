@@ -19,7 +19,7 @@ export class ProductFormComponent implements OnInit {
   activate?: boolean | undefined = true;
   allSizes = [];
   allColors = [];
-  configsSelected = [];
+  configsSelected = [{ color: 1, size: 1, quantity: 1 }];
 
   ngOnInit(): void {
     this.colorService.getAllColors().subscribe({
@@ -66,6 +66,11 @@ export class ProductFormComponent implements OnInit {
     });
     this.productForm.reset();
     console.log(this.configsSelected);
+  }
+
+  removeConfig(e: Event) {
+    const id = (e.target as HTMLInputElement).id
+    this.configsSelected.splice(Number(id), 1);
   }
   // <---------------------------- end of add config to array ---------------------------->
 
