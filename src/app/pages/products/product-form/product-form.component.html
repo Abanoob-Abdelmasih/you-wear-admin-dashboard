@@ -43,7 +43,7 @@
                 </tr>
 
                 <!-- Display selected configs -->
-                <tr *ngFor="let config of configsSelected">
+                <tr *ngFor="let config of configsSelected; index as i">
                   <td scope="row">
                     <nb-select [selected]="config.color" placeholder="Color" class="w-100">
                       <nb-option *ngFor="let color of allColors" [value]="color?.id">{{color?.name}}</nb-option>
@@ -55,7 +55,8 @@
                     </nb-select>
                   </td>
                   <td>{{config.quantity}}</td>
-                  <td><button type="button" nbButton status="danger" class="text-center w-100">Remove</button></td>
+                  <td><button [id]="i" type="button" nbButton status="danger" class="text-center w-100"
+                      (click)="removeConfig($event)">Remove</button></td>
                 </tr>
                 <!-- End display selected configs -->
 
