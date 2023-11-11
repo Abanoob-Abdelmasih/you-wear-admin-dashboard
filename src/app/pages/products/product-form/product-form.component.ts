@@ -19,6 +19,7 @@ export class ProductFormComponent implements OnInit {
   activate?: boolean | undefined = true;
   allSizes = [];
   allColors = [];
+  configsSelected = [];
 
   ngOnInit(): void {
     this.colorService.getAllColors().subscribe({
@@ -44,9 +45,19 @@ export class ProductFormComponent implements OnInit {
     });
   }
 
-  productForm = new FormGroup({
-    colorSelected: new FormControl(null, Validators.required),
+  productForm = new FormGroup({});
+
+  configOptionsArray = new FormGroup({
+    colorSelected: new FormControl(null),
+    sizeSelected: new FormControl(null),
+    quantity: new FormControl(null),
   });
+
+  // <---------------------------- Add config to array ---------------------------->
+  addConfig() {
+    this.configsSelected.push;
+  }
+  // <---------------------------- end of add config to array ---------------------------->
 
   // <---------------------------- dropzone logic ---------------------------->
   files: File[] = [];
@@ -65,6 +76,6 @@ export class ProductFormComponent implements OnInit {
   // <---------------------------- product details function ---------------------------->
 
   productDetailsFunction() {
-    console.log(this.productForm.value.colorSelected);
+    // console.log(this.productForm.value.colorSelected);
   }
 }
