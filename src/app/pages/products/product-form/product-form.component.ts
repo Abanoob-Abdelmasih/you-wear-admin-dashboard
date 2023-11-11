@@ -45,17 +45,27 @@ export class ProductFormComponent implements OnInit {
     });
   }
 
-  productForm = new FormGroup({});
-
-  configOptionsArray = new FormGroup({
+  productForm = new FormGroup({
     colorSelected: new FormControl(null),
     sizeSelected: new FormControl(null),
     quantity: new FormControl(null),
   });
 
+  // configOptionsArray = new FormGroup({
+  //   colorSelected: new FormControl(null),
+  //   sizeSelected: new FormControl(null),
+  //   quantity: new FormControl(null),
+  // });
+
   // <---------------------------- Add config to array ---------------------------->
   addConfig() {
-    this.configsSelected.push;
+    this.configsSelected.push({
+      color: this.productForm.value.colorSelected,
+      size: this.productForm.value.sizeSelected,
+      quantity: this.productForm.value.quantity,
+    });
+    this.productForm.reset();
+    console.log(this.configsSelected);
   }
   // <---------------------------- end of add config to array ---------------------------->
 
