@@ -23,18 +23,13 @@
                 <tr>
                   <td scope="row">
                     <nb-select placeholder="Select color" formControlName="colorSelected" class="w-100">
-                      <nb-option value="1">Option 1</nb-option>
-                      <nb-option value="2">Option 2</nb-option>
-                      <nb-option value="3">Option 3</nb-option>
-                      <nb-option value="4">Option 4</nb-option>
+                      <nb-option *ngFor="let color of allColors" [value]="color?.id">{{color?.name}}</nb-option>
                     </nb-select>
                   </td>
                   <td>
                     <nb-select placeholder="Select size" class="w-100">
-                      <nb-option value="1">Option 1</nb-option>
-                      <nb-option value="2">Option 2</nb-option>
-                      <nb-option value="3">Option 3</nb-option>
-                      <nb-option value="4">Option 4</nb-option>
+                      <nb-option *ngFor="let size of allSizes" [value]="size?.id">{{size?.name}}</nb-option>
+
                     </nb-select>
                   </td>
                   <td>
