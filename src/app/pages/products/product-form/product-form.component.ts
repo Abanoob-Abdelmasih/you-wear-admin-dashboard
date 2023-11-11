@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ColorService } from "../../../Services/Color/color.service";
 import { SizeService } from "../../../Services/Size/size.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "ngx-product-form",
@@ -12,7 +13,9 @@ export class ProductFormComponent implements OnInit {
   //
   constructor(
     private colorService: ColorService,
-    private sizeService: SizeService
+    private sizeService: SizeService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   // variables
@@ -20,6 +23,9 @@ export class ProductFormComponent implements OnInit {
   allSizes = [];
   allColors = [];
   configsSelected = [];
+
+  // edit vars
+  editID: number;
 
   ngOnInit(): void {
     this.colorService.getAllColors().subscribe({
@@ -43,9 +49,34 @@ export class ProductFormComponent implements OnInit {
       },
       error: (err) => {},
     });
+
+    // FOR EDIT FORM
+    this.route.params.subscribe((params) => {
+      this.editID = Number(params["id"]);
+      if (this.editID) {
+        this.sizeService.getSize(this.editID).subscribe({
+          next: (response) => {
+            if (response.status === 200) {
+              if (response.body.status === 200) {
+                // this.sizeForm.setValue({
+                //   sizeName: response.body.data.size.name,
+                //   abbreviation: response.body.data.size.abbreviation,
+                // });
+                this.activate =
+                  response.body.data.size.isActive === 0 ? false : true;
+              }
+            }
+          },
+          error: (err) => {},
+        });
+      } else {
+        this.activate = true; // make by default true for new size forms
+      }
+    });
   }
 
   productForm = new FormGroup({
+    productName: new FormControl(null),
     colorSelected: new FormControl(null),
     sizeSelected: new FormControl(null),
     quantity: new FormControl(null),
@@ -64,12 +95,14 @@ export class ProductFormComponent implements OnInit {
       size: this.productForm.value.sizeSelected,
       quantity: this.productForm.value.quantity,
     });
-    this.productForm.reset();
-    console.log(this.configsSelected);
+
+    this.productForm.get("colorSelected").reset();
+    this.productForm.get("sizeSelected").reset();
+    this.productForm.get("quantity").reset();
   }
 
   removeConfig(e: Event) {
-    const id = (e.target as HTMLInputElement).id
+    const id = (e.target as HTMLInputElement).id;
     this.configsSelected.splice(Number(id), 1);
   }
   // <---------------------------- end of add config to array ---------------------------->
@@ -92,6 +125,13 @@ export class ProductFormComponent implements OnInit {
 
   productDetailsFunction() {
     // console.log(this.productForm.value.colorSelected);
-    alert(this.productForm.value)
+    const postParams = {
+      name: this.productForm.value.productName,
+      images: null,
+      config: this.configsSelected,
+      isActive: this.activate,
+    };
+
+    console.log(postParams)
   }
 }
