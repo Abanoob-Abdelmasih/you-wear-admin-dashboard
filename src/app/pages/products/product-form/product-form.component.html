@@ -3,7 +3,7 @@
     <nb-card>
       <nb-card-header>Basic form</nb-card-header>
       <nb-card-body>
-        <form>
+        <form [formGroup]="productForm" (ngSubmit)="productDetailsFunction()">
           <div class="form-group">
             <label for="productName" class="label">Product name</label>
             <input type="text" nbInput fullWidth id="productName" name="productName" placeholder="T-Shirt">
@@ -22,7 +22,7 @@
               <tbody>
                 <tr>
                   <td scope="row">
-                    <nb-select multiple placeholder="Color" style="width:  100%;">
+                    <nb-select multiple placeholder="Select color" formControlName="colorSelected" class="w-100">
                       <nb-option value="1">Option 1</nb-option>
                       <nb-option value="2">Option 2</nb-option>
                       <nb-option value="3">Option 3</nb-option>
@@ -30,7 +30,7 @@
                     </nb-select>
                   </td>
                   <td>
-                    <nb-select multiple placeholder="Size" style="width:  100%;">
+                    <nb-select multiple placeholder="Select size" class="w-100">
                       <nb-option value="1">Option 1</nb-option>
                       <nb-option value="2">Option 2</nb-option>
                       <nb-option value="3">Option 3</nb-option>
@@ -40,13 +40,15 @@
                   <td>
                     <input type="text" nbInput fullWidth id="quantity" name="quantity" placeholder="12">
                   </td>
-                  <td>Add</td>
+                  <td>
+                    <button type="button" nbButton status="success" class="text-center w-100">Add</button>
+                  </td>
                 </tr>
 
                 <!-- Display selected configs -->
                 <tr>
                   <td scope="row">
-                    <nb-select multiple placeholder="Color" style="width:  100%;">
+                    <nb-select multiple placeholder="Color" class="w-100">
                       <nb-option value="1">Option 1</nb-option>
                       <nb-option value="2">Option 2</nb-option>
                       <nb-option value="3">Option 3</nb-option>
@@ -54,7 +56,7 @@
                     </nb-select>
                   </td>
                   <td>
-                    <nb-select multiple placeholder="Size" style="width:  100%;">
+                    <nb-select multiple placeholder="Size" class="w-100">
                       <nb-option value="1">Option 1</nb-option>
                       <nb-option value="2">Option 2</nb-option>
                       <nb-option value="3">Option 3</nb-option>
@@ -62,7 +64,7 @@
                     </nb-select>
                   </td>
                   <td>10</td>
-                  <td>Remove</td>
+                  <td><button type="button" nbButton status="danger" class="text-center w-100">Remove</button></td>
                 </tr>
                 <!-- End display selected configs -->
 
