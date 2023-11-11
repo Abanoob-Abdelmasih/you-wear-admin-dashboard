@@ -32,6 +32,16 @@ export class ProductFormComponent implements OnInit {
       error: (err) => {},
     });
 
+    this.sizeService.getAllSizes().subscribe({
+      next: (response) => {
+        if (response.status === 200) {
+          if (response.body.status === 200) {
+            this.allSizes = response.body.data.all_sizes;
+          }
+        }
+      },
+      error: (err) => {},
+    });
   }
 
   productForm = new FormGroup({
