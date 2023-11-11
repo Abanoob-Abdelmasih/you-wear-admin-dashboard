@@ -6,7 +6,8 @@
         <form [formGroup]="productForm" (ngSubmit)="productDetailsFunction()">
           <div class="form-group">
             <label for="productName" class="label">Product name</label>
-            <input type="text" nbInput fullWidth id="productName" name="productName" placeholder="T-Shirt">
+            <input type="text" nbInput fullWidth id="productName" name="productName" formControlName="productName"
+              placeholder="T-Shirt">
           </div>
 
           <!-- Table -->
