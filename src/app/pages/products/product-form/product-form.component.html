@@ -27,38 +27,34 @@
                     </nb-select>
                   </td>
                   <td>
-                    <nb-select placeholder="Select size" class="w-100">
+                    <nb-select placeholder="Select size" formControlName="sizeSelected" class="w-100">
                       <nb-option *ngFor="let size of allSizes" [value]="size?.id">{{size?.name}}</nb-option>
 
                     </nb-select>
                   </td>
                   <td>
-                    <input type="text" nbInput fullWidth id="quantity" name="quantity" placeholder="12">
+                    <input type="text" nbInput fullWidth formControlName="quantity" id="quantity" name="quantity"
+                      placeholder="12">
                   </td>
                   <td>
-                    <button type="button" nbButton status="success" class="text-center w-100">Add</button>
+                    <button type="button" nbButton status="success" class="text-center w-100"
+                      (click)="addConfig()">Add</button>
                   </td>
                 </tr>
 
                 <!-- Display selected configs -->
-                <tr>
+                <tr *ngFor="let config of configsSelected">
                   <td scope="row">
-                    <nb-select placeholder="Color" class="w-100">
-                      <nb-option value="1">Option 1</nb-option>
-                      <nb-option value="2">Option 2</nb-option>
-                      <nb-option value="3">Option 3</nb-option>
-                      <nb-option value="4">Option 4</nb-option>
+                    <nb-select [selected]="config.color" placeholder="Color" class="w-100">
+                      <nb-option *ngFor="let color of allColors" [value]="color?.id">{{color?.name}}</nb-option>
                     </nb-select>
                   </td>
                   <td>
-                    <nb-select placeholder="Size" class="w-100">
-                      <nb-option value="1">Option 1</nb-option>
-                      <nb-option value="2">Option 2</nb-option>
-                      <nb-option value="3">Option 3</nb-option>
-                      <nb-option value="4">Option 4</nb-option>
+                    <nb-select [selected]="config.size" placeholder="Size" class="w-100">
+                      <nb-option *ngFor="let size of allSizes" [value]="size?.id">{{size?.name}}</nb-option>
                     </nb-select>
                   </td>
-                  <td>10</td>
+                  <td>{{config.quantity}}</td>
                   <td><button type="button" nbButton status="danger" class="text-center w-100">Remove</button></td>
                 </tr>
                 <!-- End display selected configs -->
