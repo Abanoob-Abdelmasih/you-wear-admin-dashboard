@@ -109,15 +109,65 @@ export class ProductFormComponent implements OnInit {
 
   // <---------------------------- dropzone logic ---------------------------->
   files: File[] = [];
+  temp = [];
+
+  // onSelect(event) {
+  //   console.log(event.addedFiles);
+  //   this.files.push(...event.addedFiles);
+
+  //   const formData = new FormData();
+  //   for (let i = 0; i < this.files.length; i++) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(this.files[i]);
+  //     reader.onload = (event) => {
+  //       this.temp.push(event.target.result);
+  //       console.log(event);
+  //     };
+  //   }
+  //   console.log(this.temp)
+  // }
 
   onSelect(event) {
-    console.log(event);
+    console.log(event.addedFiles);
     this.files.push(...event.addedFiles);
+
+    // Create an array of promises for each FileReader
+    const promises = this.files.map((file) => this.readFileAsDataURL(file));
+
+    // Wait for all promises to resolve
+    Promise.all(promises)
+      .then((results) => {
+        this.temp.push(...results);
+        console.log(this.temp);
+
+        // Further processing after all files are read
+      })
+      .catch((error) => {
+        console.error("Error reading files:", error);
+      });
+  }
+
+  readFileAsDataURL(file: File): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        resolve(event.target.result as string);
+      };
+
+      reader.onerror = (error) => {
+        reject(error);
+      };
+
+      reader.readAsDataURL(file);
+    });
   }
 
   onRemove(event) {
     console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
+    this.temp.splice(this.files.indexOf(event), 1);
+    console.log(this.temp);
   }
   // <---------------------------- end of dropzone logic ---------------------------->
 
@@ -132,6 +182,6 @@ export class ProductFormComponent implements OnInit {
       isActive: this.activate,
     };
 
-    console.log(postParams)
+    console.log(postParams);
   }
 }
