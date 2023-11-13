@@ -146,12 +146,12 @@ export class ProductFormComponent implements OnInit {
 
   sendImages() {
     const formData = new FormData();
+    formData.append("name", "product name");
 
     this.files.forEach((file) => {
       formData.append("images[]", file);
     });
 
-    formData.append("name", "product name");
 
     this.productService.tempImages({}, formData).subscribe({
       next: (response) => {},
