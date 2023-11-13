@@ -1,8 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { ColorService } from "../../../Services/Color/color.service";
 import { SizeService } from "../../../Services/Size/size.service";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ProductService } from "../../../Services/Product/product.service";
 
 @Component({
   selector: "ngx-product-form",
@@ -15,7 +21,9 @@ export class ProductFormComponent implements OnInit {
     private colorService: ColorService,
     private sizeService: SizeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private formBuilder: FormBuilder
   ) {}
 
   // variables
@@ -80,6 +88,7 @@ export class ProductFormComponent implements OnInit {
     colorSelected: new FormControl(null),
     sizeSelected: new FormControl(null),
     quantity: new FormControl(null),
+    images: new FormControl(null),
   });
 
   // configOptionsArray = new FormGroup({
@@ -111,63 +120,14 @@ export class ProductFormComponent implements OnInit {
   files: File[] = [];
   temp = [];
 
-  // onSelect(event) {
-  //   console.log(event.addedFiles);
-  //   this.files.push(...event.addedFiles);
-
-  //   const formData = new FormData();
-  //   for (let i = 0; i < this.files.length; i++) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(this.files[i]);
-  //     reader.onload = (event) => {
-  //       this.temp.push(event.target.result);
-  //       console.log(event);
-  //     };
-  //   }
-  //   console.log(this.temp)
-  // }
-
   onSelect(event) {
-    console.log(event.addedFiles);
     this.files.push(...event.addedFiles);
-
-    // Create an array of promises for each FileReader
-    const promises = this.files.map((file) => this.readFileAsDataURL(file));
-
-    // Wait for all promises to resolve
-    Promise.all(promises)
-      .then((results) => {
-        this.temp.push(...results);
-        console.log(this.temp);
-
-        // Further processing after all files are read
-      })
-      .catch((error) => {
-        console.error("Error reading files:", error);
-      });
   }
 
-  readFileAsDataURL(file: File): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        resolve(event.target.result as string);
-      };
-
-      reader.onerror = (error) => {
-        reject(error);
-      };
-
-      reader.readAsDataURL(file);
-    });
-  }
 
   onRemove(event) {
-    console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
     this.temp.splice(this.files.indexOf(event), 1);
-    console.log(this.temp);
   }
   // <---------------------------- end of dropzone logic ---------------------------->
 
@@ -182,6 +142,21 @@ export class ProductFormComponent implements OnInit {
       isActive: this.activate,
     };
 
-    console.log(postParams);
+    console.log(this.temp);
+  }
+
+  sendImages() {
+    const formData = new FormData();
+
+    this.files.forEach((file) => {
+      formData.append("images[]", file);
+    });
+
+    formData.append("name", "product name");
+
+    this.productService.tempImages({}, formData).subscribe({
+      next: (response) => {},
+      error: (err) => {},
+    });
   }
 }
