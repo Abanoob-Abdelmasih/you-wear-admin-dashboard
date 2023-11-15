@@ -9,6 +9,7 @@ import { ColorService } from "../../../Services/Color/color.service";
 import { SizeService } from "../../../Services/Size/size.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProductService } from "../../../Services/Product/product.service";
+import { stringify } from "querystring";
 
 @Component({
   selector: "ngx-product-form",
@@ -100,8 +101,8 @@ export class ProductFormComponent implements OnInit {
   // <---------------------------- Add config to array ---------------------------->
   addConfig() {
     this.configsSelected.push({
-      color: this.productForm.value.colorSelected,
-      size: this.productForm.value.sizeSelected,
+      color_id: this.productForm.value.colorSelected,
+      size_id: this.productForm.value.sizeSelected,
       quantity: this.productForm.value.quantity,
     });
 
@@ -124,7 +125,6 @@ export class ProductFormComponent implements OnInit {
     this.files.push(...event.addedFiles);
   }
 
-
   onRemove(event) {
     this.files.splice(this.files.indexOf(event), 1);
   }
@@ -133,27 +133,17 @@ export class ProductFormComponent implements OnInit {
   // <---------------------------- product details function ---------------------------->
 
   productDetailsFunction() {
-    // console.log(this.productForm.value.colorSelected);
-    const postParams = {
-      name: this.productForm.value.productName,
-      images: null,
-      config: this.configsSelected,
-      isActive: this.activate,
-    };
-
-    console.log(this.temp);
-  }
-
-  sendImages() {
     const formData = new FormData();
-    formData.append("name", "product name");
+    formData.append("name", this.productForm.value.productName);
+
+    formData.append("config", JSON.stringify(this.configsSelected));
 
     this.files.forEach((file) => {
       formData.append("images[]", file);
     });
 
-
-    this.productService.tempImages({}, formData).subscribe({
+    console.log(formData, this.configsSelected, this.files);
+    this.productService.addProduct({}, formData).subscribe({
       next: (response) => {},
       error: (err) => {},
     });
