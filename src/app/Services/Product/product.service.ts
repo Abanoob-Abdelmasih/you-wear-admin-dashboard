@@ -9,9 +9,9 @@ import { map } from "rxjs/operators";
 export class ProductService {
   constructor(private configServices: ConfigService) {}
 
-  tempImages(getParams?: any, postParams?: any) {
+  addProduct(getParams?: any, postParams?: any) {
     return this.configServices
-      .postNewRequest("/test-image", getParams, postParams)
+      .postNewRequest("/product/create", getParams, postParams)
       .pipe(
         map((response) => {
           return response;
