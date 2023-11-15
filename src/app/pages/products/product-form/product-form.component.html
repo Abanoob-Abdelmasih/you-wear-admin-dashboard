@@ -3,7 +3,7 @@
     <nb-card>
       <nb-card-header>Basic form</nb-card-header>
       <nb-card-body>
-        <form [formGroup]="productForm" (ngSubmit)="sendImages()" enctype="multipart/form-data">
+        <form [formGroup]="productForm" (ngSubmit)="productDetailsFunction()" enctype="multipart/form-data">
           <div class="form-group">
             <label for="productName" class="label">Product name</label>
             <input type="text" nbInput fullWidth id="productName" name="productName" formControlName="productName"
