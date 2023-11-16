@@ -67,4 +67,17 @@
       display: none;
     }
   }
+
+  .custom-header-container{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    width: auto;
+    font-weight: 600;
+  }
+
+  .custom-header-container a{
+    text-decoration: none;
+
+  }
 }
