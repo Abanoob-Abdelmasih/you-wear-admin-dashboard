@@ -10,6 +10,7 @@ import { SizeService } from "../../../Services/Size/size.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProductService } from "../../../Services/Product/product.service";
 import { stringify } from "querystring";
+import { ConvertFileService } from "../../../Services/Convert/convert-file.service";
 
 @Component({
   selector: "ngx-product-form",
@@ -24,7 +25,8 @@ export class ProductFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private convertFile: ConvertFileService
   ) {}
 
   // variables
@@ -81,6 +83,13 @@ export class ProductFormComponent implements OnInit {
       } else {
         this.activate = true; // make by default true for new size forms
       }
+    });
+
+    this.convertFile.getImage().subscribe({
+      next: (response) => {
+        console.log('here',response);
+      },
+      error: (err) => {},
     });
   }
 
