@@ -18,4 +18,11 @@ export class ProductService {
         })
       );
   }
+  test(getParams?: any) {
+    return this.configServices.readRequest("/test", getParams).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
 }
