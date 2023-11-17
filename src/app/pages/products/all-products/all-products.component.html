@@ -1,1 +1,14 @@
-<p>all-products works!</p>
+<nb-card>
+  <nb-card-header>
+    <div class="d-flex justify-content-between align-items-center">
+      <div>Products</div>
+      <a [style]="'color:white;'" class="  h-100 btn btn-primary " [routerLink]="['form']"> Add Product
+      </a>
+    </div>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="data" (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
