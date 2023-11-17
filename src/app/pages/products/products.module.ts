@@ -17,8 +17,9 @@ import { ProductsRoutingModule } from "./products-routing.module";
 import { ProductFormComponent } from "./product-form/product-form.component";
 import { NgxDropzoneModule } from "ngx-dropzone";
 import { ReactiveFormsModule } from "@angular/forms";
+import { AllProductsComponent } from './all-products/all-products.component';
 @NgModule({
-  declarations: [ProductFormComponent],
+  declarations: [ProductFormComponent, AllProductsComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,
