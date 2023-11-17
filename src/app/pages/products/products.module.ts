@@ -18,6 +18,7 @@ import { ProductFormComponent } from "./product-form/product-form.component";
 import { NgxDropzoneModule } from "ngx-dropzone";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AllProductsComponent } from './all-products/all-products.component';
+import { Ng2SmartTableModule } from "ng2-smart-table";
 @NgModule({
   declarations: [ProductFormComponent, AllProductsComponent],
   imports: [
@@ -36,6 +37,8 @@ import { AllProductsComponent } from './all-products/all-products.component';
     NbSelectModule,
     NbToggleModule,
     NbUserModule,
+    Ng2SmartTableModule
   ],
+  exports:[AllProductsComponent]
 })
 export class ProductsModule {}
